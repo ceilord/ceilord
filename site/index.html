@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://ceilord.com/">
+  <meta name="description" content="Ceilord is a long-form AI writer built around patterns in real human writing, from document structure to paragraph and sentence moves.">
+  <meta property="og:title" content="Ceilord | An AI writer built around how humans actually build documents.">
+  <meta property="og:description" content="Ceilord uses patterns in real human writing to guide long-form generation step by step instead of rewriting a finished AI draft afterward.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ceilord.com/">
+  <meta property="og:site_name" content="Ceilord">
+  <title>Ceilord | An AI writer built around how humans actually build documents.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/lenis.css">
+  <link rel="stylesheet" href="/styles.css?v=20260929-01">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner shell">
+      <a class="brand" href="#top" aria-label="Ceilord home">ceilord</a>
+      <a class="header-link" href="#access">private beta</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title" data-mask-reveal data-headline-test>An AI writer built around how humans actually build documents.</h1>
+        <p class="hero-sub" data-headline-sub>Ceilord maps patterns in real human writing—from document structure to paragraph and sentence moves—and uses them to guide long-form generation step by step, instead of generating a full AI draft and rewriting it afterward.</p>
+
+        <form class="beta-form hero-form" data-beta-form novalidate>
+          <label class="sr-only" for="hero-email">Email address</label>
+          <div class="form-shell">
+            <input id="hero-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Email address" required maxlength="200">
+            <button type="submit">Get private access</button>
+          </div>
+          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="consent-note">
+            <input type="checkbox" name="consent" value="yes" required>
+            <span>I agree to the <a href="/terms-of-service.html">Terms</a> and ask Ceilord to use my email for this beta request and beta-access updates, as explained in the <a href="/privacy-policy.html">Privacy Policy</a>.</span>
+          </label>
+          <p class="form-note" data-form-note>Free private beta for content teams already using AI. No card.</p>
+        </form>
+      </div>
+
+      <div class="job-panel" data-job-panel aria-label="Example Ceilord writing job">
+        <div class="job-topline">
+          <span>writing job / example</span>
+          <span class="job-status"><i aria-hidden="true"></i><span data-job-status>checking</span></span>
+        </div>
+
+        <div class="job-brief">
+          <p>Write a launch article for content leads about the new reporting workspace.</p>
+          <div class="job-spec" aria-label="Brief requirements">
+            <div><span>audience</span><strong>content leads</strong></div>
+            <div><span>length</span><strong>900 words</strong></div>
+            <div><span>tone</span><strong>direct, specific</strong></div>
+            <div><span>must cover</span><strong>setup · reporting · handoff</strong></div>
+          </div>
+        </div>
+
+        <div class="pipeline" data-pipeline>
+          <svg class="pipeline-beam" aria-hidden="true">
+            <path class="beam-base" data-beam-path></path>
+            <path class="beam-active" data-beam-active></path>
+          </svg>
+          <div class="pipeline-step" data-pipeline-step><span class="step-dot"></span><span>brief</span></div>
+          <div class="pipeline-step" data-pipeline-step><span class="step-dot"></span><span>write</span></div>
+          <div class="pipeline-step is-current" data-pipeline-step><span class="step-dot"></span><span>check</span></div>
+          <div class="pipeline-step" data-pipeline-step><span class="step-dot"></span><span>result</span></div>
+        </div>
+
+        <div class="qa-list" aria-label="Structured QA criteria">
+          <div class="qa-row" data-qa-row><span>Every instruction addressed</span><b>pass</b></div>
+          <div class="qa-row" data-qa-row><span>Audience and topic matched</span><b>pass</b></div>
+          <div class="qa-row" data-qa-row><span>Length requirement checked</span><b>pass</b></div>
+          <div class="qa-row" data-qa-row><span>No placeholder or incomplete text</span><b>pass</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contrast shell" id="how" aria-labelledby="contrast-title">
+      <div class="contrast-copy">
+        <h2 id="contrast-title">You still carry <br>the job.</h2>
+        <p>The model can write. In a blank chat, you still carry the brief, misses, corrections and acceptance bar. Ceilord is built to take more of that operational loop.</p>
+      </div>
+
+      <div class="workflow-compare" data-workflow-compare>
+        <div class="workflow-column workflow-old">
+          <h3>Blank chat</h3>
+          <ol>
+            <li data-old-step><span>01</span><strong>Brief</strong></li>
+            <li data-old-step><span>02</span><strong>Draft</strong></li>
+            <li data-old-step><span>03</span><strong>Inspect</strong></li>
+            <li data-old-step><span>04</span><strong>Find the misses</strong></li>
+            <li data-old-step><span>05</span><strong>Prompt again</strong></li>
+            <li data-old-step><span>06</span><strong>Inspect again</strong></li>
+            <li data-old-step><span>07</span><strong>Final check</strong></li>
+          </ol>
+        </div>
+
+        <div class="workflow-column workflow-ceilord">
+          <h3>Ceilord job</h3>
+          <ol>
+            <li data-new-step><span>01</span><strong>Brief</strong></li>
+            <li data-new-step><span>02</span><strong>Write</strong></li>
+            <li data-new-step><span>03</span><strong>Independent check</strong></li>
+            <li data-new-step><span>04</span><strong>Retry once if needed</strong></li>
+            <li data-new-step><span>05</span><strong>Result or stop</strong></li>
+          </ol>
+          <div class="workflow-progress" aria-hidden="true"><i data-workflow-fill></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof shell" aria-labelledby="proof-title">
+      <div class="proof-heading">
+        <h2 id="proof-title">Not a vague <br>quality score.</h2>
+        <p>Generation and QA are separate model calls. The checker uses explicit criteria from the job, then Ceilord retries once or stops.</p>
+      </div>
+
+      <div class="proof-workbench" data-proof-workbench>
+        <article class="proof-document">
+          <div class="document-meta">
+            <span>Call 01 / write</span>
+            <span>engine path</span>
+          </div>
+          <h3>The writing call gets the instructions and provided requirements, then produces the piece itself.</h3>
+          <p>No “help me write this” chat loop. The generation call is asked to address every part and match the requested length or format when one is stated.</p>
+          <div class="proof-sequence" aria-label="Current beta behavior">
+            <div><span>01</span><strong>write</strong><em>completed work</em></div>
+            <div><span>02</span><strong>check</strong><em>separate model call</em></div>
+            <div><span>03</span><strong>retry / stop</strong><em>one retry maximum</em></div>
+          </div>
+        </article>
+
+        <aside class="proof-checks" aria-label="Ceilord QA result">
+          <div class="check-header">
+            <span>Call 02 / check</span>
+            <strong data-proof-state>explicit criteria</strong>
+          </div>
+          <div class="check-item" data-proof-check><span>Every question or instruction addressed</span><i>✓</i></div>
+          <div class="check-item" data-proof-check><span>Subject and topic matched</span><i>✓</i></div>
+          <div class="check-item" data-proof-check><span>No placeholder or incomplete text</span><i>✓</i></div>
+          <div class="check-item" data-proof-check><span>Each provided requirement checked</span><i>✓</i></div>
+          <p class="check-note">If the check fails, Ceilord generates once more. If it still fails, the job stops instead of silently passing.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="access shell" id="access" aria-labelledby="access-title">
+      <div class="access-copy">
+        <h2 id="access-title">Bring your <br>real brief.</h2>
+        <p>Run the same writing job through Ceilord and your current workflow. Keep the one that leaves less work.</p>
+      </div>
+
+      <form class="beta-form access-form" data-beta-form novalidate>
+        <label class="sr-only" for="access-email">Email address</label>
+        <div class="form-shell">
+          <input id="access-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Email address" required maxlength="200">
+          <button type="submit">Get private access</button>
+        </div>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="consent-note">
+          <input type="checkbox" name="consent" value="yes" required>
+          <span>I agree to the <a href="/terms-of-service.html">Terms</a> and ask Ceilord to use my email for this beta request and beta-access updates, as explained in the <a href="/privacy-policy.html">Privacy Policy</a>.</span>
+        </label>
+        <p class="form-note" data-form-note>Free. No card. Access opens in small batches.</p>
+      </form>
+    </section>
+
+    <section class="answers shell" aria-label="Short answers">
+      <details>
+        <summary>Why not just use ChatGPT or Claude?<span aria-hidden="true"></span></summary>
+        <p>You can. The beta question is narrower: can Ceilord get the same real writing job to an acceptable result with less operator intervention? Bring a brief you already know and compare the workflows.</p>
+      </details>
+      <details>
+        <summary>Is Ceilord a rewriting tool?<span aria-hidden="true"></span></summary>
+        <p>No. Give it a topic, brief, instructions, context, or constraints. Ceilord writes the piece itself.</p>
+      </details>
+      <details>
+        <summary>Is the API live?<span aria-hidden="true"></span></summary>
+        <p>No. Direct product access is the current beta. API and SDK access are planned.</p>
+      </details>
+      <details>
+        <summary>Does Ceilord keep repairing until it passes?<span aria-hidden="true"></span></summary>
+        <p>Not yet. The current engine runs structured QA, retries once after a failed check, then stops if QA still fails.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-sticky-footer>
+    <div class="footer-inner shell" data-footer-inner>
+      <div class="footer-topline">
+        <div>
+          <a class="footer-brand" href="#top">ceilord</a>
+          <p>Give it the writing job.</p>
+        </div>
+        <a class="footer-cta" href="#access">private beta ↗</a>
+      </div>
+
+      <nav class="footer-resource-grid" aria-label="Writing resources">
+        <a href="/blog/what-is-an-ai-writing-engine.html"><span>01</span>AI writing engine</a>
+        <a href="/blog/long-form-ai-writer.html"><span>02</span>Long-form AI writer</a>
+        <a href="/blog/ai-writing-workflow.html"><span>03</span>AI writing workflow</a>
+        <a href="/blog/ai-writing-api.html"><span>04</span>AI writing API</a>
+        <a href="/blog/ai-writing-agent.html"><span>05</span>AI writing agents</a>
+        <a href="/blog/ai-content-generator-vs-writing-engine.html"><span>06</span>Generator vs writing engine</a>
+        <a href="/privacy-policy.html"><span>07</span>Privacy policy</a>
+        <a href="/terms-of-service.html"><span>08</span>Terms of service</a>
+        <a href="mailto:hello@ceilord.com"><span>09</span>Contact Ceilord</a>
+      </nav>
+
+      <div class="footer-wordmark" aria-hidden="true" data-footer-wordmark>ceilord</div>
+
+      <div class="footer-meta">
+        <span>direct beta now</span>
+        <a href="/blog/index.html">all resources ↗</a>
+        <span>API + SDK planned</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/vendor/gsap.min.js"></script>
+  <script src="/vendor/ScrollTrigger.min.js"></script>
+  <script src="/vendor/lenis.min.js"></script>
+  <script src="/app.js?v=20261001-success-modal" defer></script>
+  <div class="success-modal" data-success-modal role="dialog" aria-modal="true" aria-labelledby="success-title" hidden>
+    <canvas class="confetti" data-confetti aria-hidden="true"></canvas>
+    <div class="success-card">
+      <h2 id="success-title">You're on the list.</h2>
+      <p>Your private access request is in. We sent a confirmation to <strong data-success-email></strong> and will email you when your place opens.</p>
+      <button type="button" data-success-close>Close</button>
+    </div>
+  </div>
+</body>
+</html>

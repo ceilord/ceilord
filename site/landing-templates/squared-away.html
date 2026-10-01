@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>Tell it what to write. · Ceilord</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500&display=swap">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #252525;
+    --blue-100: #f0f1ff;
+    --blue-300: #c7cbff;
+    --blue-500: #8992f3;
+    --blue-700: #5863ea;
+    --font: "ABC Oracle", "Figtree", "Helvetica Neue", Arial, sans-serif;
+  }
+  html, body {
+    height: 100%;
+    margin: 0;
+    background: var(--bg);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .gradient { position: fixed; inset: 0; overflow: hidden; }
+  .gradient svg { display: block; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<div class="gradient" role="img" aria-label="Ceilord — Tell it what to write.">
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 2048 1506">
+  <defs>
+    <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#DDE0FF"/>
+      <stop offset="0.3333333333333333" stop-color="#AEB5FF"/>
+      <stop offset="0.6666666666666666" stop-color="#7883F1"/>
+      <stop offset="1" stop-color="#5863EA"/>
+    </linearGradient>
+    <linearGradient id="sf" x1="25.8%" y1="6.3%" x2="74.2%" y2="93.7%">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="49.0%" stop-color="#fff"/>
+      <stop offset="80.6%" stop-color="#fff" stop-opacity="0.693"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.045"/>
+    </linearGradient>
+    <mask id="sm"><rect x="-20%" y="-20%" width="140%" height="140%" fill="url(#sf)"/></mask>
+    <filter id="sb" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="13.86"/></filter>
+    <filter id="ss" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.82"/></filter>
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="9" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+  <rect id="Field" width="2048" height="1506" fill="#FFFFFF"/>
+  <g id="Form" transform="translate(1822.72 1310.22) rotate(8.00) skewX(0.00) scale(2.773777 2.773777) translate(-271.471 -271.471)" mask="url(#sm)" fill="url(#sg)">
+    <g id="Bloom" opacity="0.235" filter="url(#sb)">
+      <path d="M 0 0 L 542.942 0 L 542.942 542.942 L 0 542.942 L 0 0 Z" fill-rule="evenodd"/>
+    </g>
+    <g id="Shape" filter="url(#ss)">
+      <path d="M 0 0 L 542.942 0 L 542.942 542.942 L 0 542.942 L 0 0 Z" fill-rule="evenodd"/>
+    </g>
+  </g>
+  <rect width="2048" height="1506" filter="url(#grain)" opacity="0.035" style="mix-blend-mode:multiply"/>
+  <g id="Ceilord headline">
+    <text x="164" y="315" text-anchor="start" font-family="ABC Oracle, Figtree, Helvetica Neue, Arial, sans-serif" font-weight="300" letter-spacing="-11" font-size="196" fill="#252525">Tell it what</text>
+    <text x="164" y="500" text-anchor="start" font-family="ABC Oracle, Figtree, Helvetica Neue, Arial, sans-serif" font-weight="300" letter-spacing="-11" font-size="196" fill="#252525">to write.</text>
+  </g>
+</svg>
+</div>
+</body>
+</html>

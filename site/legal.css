@@ -1,0 +1,107 @@
+.legal-content {
+  width: min(760px, calc(100vw - 56px));
+  margin-inline: auto;
+  padding: clamp(64px, 9vw, 116px) 0 120px;
+  background: #fff;
+}
+
+.legal-kicker {
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.legal-content h1 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--black);
+  font-size: clamp(48px, 7vw, 76px);
+  line-height: .98;
+  letter-spacing: -.055em;
+  font-weight: 300;
+}
+
+.legal-updated {
+  margin: 22px 0 32px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.legal-lede {
+  max-width: 660px;
+  margin: 0 0 44px;
+  color: #565656;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.legal-draft-note {
+  margin: 0 0 56px;
+  padding: 18px 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--soft);
+  color: #555;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.legal-draft-note strong { color: var(--ink); font-weight: 500; }
+
+.legal-section {
+  padding: 30px 0 28px;
+  border-top: 1px solid var(--line);
+}
+
+.legal-section h2 {
+  margin: 0 0 15px;
+  color: var(--black);
+  font-size: 25px;
+  line-height: 1.15;
+  letter-spacing: -.035em;
+  font-weight: 300;
+}
+
+.legal-section p,
+.legal-section li {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.legal-section p:last-child { margin-bottom: 0; }
+.legal-section ul { padding-left: 22px; }
+.legal-section li + li { margin-top: 7px; }
+
+.legal-content a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: #bcbcbc;
+  text-underline-offset: 3px;
+}
+
+.legal-content a:hover { text-decoration-color: var(--accent); }
+
+.legal-footer {
+  padding: 24px max(28px, calc((100vw - 1180px) / 2));
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  background: #101010;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.legal-footer a:hover { color: #fff; }
+
+@media (max-width: 600px) {
+  .legal-content { width: calc(100vw - 40px); }
+  .legal-section h2 { font-size: 22px; }
+  .legal-section p,
+  .legal-section li { font-size: 14px; }
+  .legal-footer { padding-inline: 20px; flex-wrap: wrap; }
+}

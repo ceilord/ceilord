@@ -1,0 +1,16 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.db
+
+.dev.vars
+.dev.vars.*
+.wrangler/
+.wrangler-bootstrap.generated.jsonc
+.tools/
+.worktrees/
+.open-core-export/
+worker-configuration.d.ts
+site/vendor/

@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS beta_signups (
+  email TEXT PRIMARY KEY NOT NULL,
+  created_at TEXT NOT NULL
+) WITHOUT ROWID;
