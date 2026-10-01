@@ -91,6 +91,14 @@ h1, h2, h3, p { margin-top: 0; }
 .header-link:hover,
 .footer-cta:hover { color: var(--ink); }
 
+.header-actions { display: flex; align-items: center; gap: 18px; }
+.header-github {
+  display: inline-flex;
+  color: #777;
+  transition: color .2s ease;
+}
+.header-github:hover { color: var(--ink); }
+
 /* Hero */
 .hero {
   min-height: calc(100svh - 82px);
