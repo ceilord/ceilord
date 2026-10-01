@@ -16,9 +16,22 @@
   <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
-Ceilord is a from-scratch AI writing system aimed at strong long-form writing, learned from real human writing behavior instead of generating a draft and rewriting it afterward to sound human. It is offered two ways: as a hosted API for developers who want to build writing products (a study app, a tutoring tool, a content workflow), and as a hosted app for people who just want finished writing.
+Ceilord is a from-scratch AI writing system aimed at strong long-form writing, learned from real human writing behavior instead of generating a draft and rewriting it afterward to sound human.
 
-**Status: private beta.** Access opens in small batches. You can [request access at ceilord.com](https://ceilord.com).
+> **Private beta. Request access first.**
+> Ceilord is not open to everyone yet. Access opens in small batches, and the beta is free with no card. It will become available to everyone later. **[Request private access at ceilord.com](https://ceilord.com)**.
+
+## Two ways to use Ceilord
+
+| | **Hosted app** | **Ceilord API (bring your own app and database)** |
+| --- | --- | --- |
+| For | Students and anyone who just wants finished writing | Developers building their own product, for example a SAT prep or tutoring app |
+| How it works | Sign in on the web or mobile app and write | Your app and your database call the Ceilord API to write |
+| Database | Managed by Ceilord | Yours, self-hosted and private |
+| Cost | A subscription in the app | An API key from Ceilord |
+| Available | Private beta, by request | Private beta, by request |
+
+**Important:** self-hosting your own database does not mean self-hosting the writing model. The model is not open source and does not run on your machine. A self-hosted setup always needs the Ceilord API, so you need an API key from Ceilord to use it. Without a key, this repository does not write anything.
 
 ## What this repository is
 
@@ -31,7 +44,7 @@ This is the **open core**: the public parts of Ceilord that anyone can read, run
 | Database migrations (`migrations/`) | The hosted web and mobile apps |
 | Deployment and security scripts (`scripts/`) | API keys, billing, and account systems |
 
-The writing model is reached through the hosted Ceilord API. The client libraries and examples for that API will live here once the API opens to developers.
+The writing model is reached only through the hosted Ceilord API. Client libraries and examples for that API will live here once it opens to developers.
 
 ## How it fits together
 
