@@ -3,7 +3,7 @@
 <p align="center"><strong>AI writing for long-form work, built from real human-writing behavior.</strong></p>
 
 <p align="center">
-  Ceilord is being built to take a topic or brief and produce the writing itself — not to rewrite or “humanize” a finished AI draft.
+  Ceilord is being built to take a topic or brief and produce the writing itself, not to rewrite or "humanize" a finished AI draft.
 </p>
 
 <p align="center">
@@ -24,23 +24,58 @@
 
 ## What is Ceilord?
 
-Ceilord is a from-scratch AI writing system focused on producing strong long-form writing from learned human-writing behavior.
+Ceilord is an AI that writes. You tell it what you need, and it writes the finished piece for you.
 
-**Access is private.** Ceilord is currently opening the product in small batches through private access. A developer API and SDK are planned but are not public yet.
+**Right now it is in private beta.** You have to ask for access first, and it is free during the beta. It will open to everyone later.
 
-> **Important:** this repository is the open-source web and signup layer around Ceilord. The writing engine itself is not open source and is not included here.
+**[Ask for access at ceilord.com](https://ceilord.com)**
 
-## What is in this repository?
+## Two ways to use it
 
-| Included | Not included |
+| | **1. The Ceilord app** | **2. The Ceilord API** |
+| --- | --- | --- |
+| In plain words | Open the app, type what you need, get your writing | Your own app asks Ceilord to write for it |
+| Made for | Students and anyone who wants to write | Developers building their own product |
+| Your data | Kept by Ceilord | Kept in **your own private database** |
+| Who does the writing | Ceilord | **Ceilord** |
+| Cost | A monthly subscription | An API key from Ceilord |
+| Can you use it today? | Private beta, ask for access | **Not yet.** Planned |
+
+## The one rule you must know
+
+> **Your database can be yours. The writing always comes from Ceilord.**
+>
+> The Ceilord writing model is not open source. It never runs on your computer. If you build your own app with your own database, your app still has to call the Ceilord API, so you always need a Ceilord API key.
+
+```text
+   THE APP                                  THE API
+
+   Student                                  Your app  ---- your own database
+      |                                        |            (private, yours)
+      v                                        |
+   Ceilord app                                 |  API key
+      |                                        |
+      +------------------+---------------------+
+                         v
+                   Ceilord API
+                         |
+                         v
+                Ceilord writing model
+              (private, run by Ceilord)
+```
+
+## What is inside this repository?
+
+This repository is only the **website and the sign-up code**. It is not the writing model.
+
+| In this repository | Not in this repository |
 | --- | --- |
-| Public website and legal pages | Writing engine and prompts |
-| Private-beta signup flow | Training or reference-writing data |
-| Cloudflare Worker for signup handling | Hosted Ceilord application |
-| Turso/libSQL migrations | Ceilord API or SDK |
-| Deployment and security tooling | Production credentials or user data |
+| The Ceilord website | The writing model |
+| The "get private access" sign-up | Its prompts and training writing |
+| Setup and deploy scripts | The Ceilord app |
+| Database migrations | API keys and billing |
 
-If you clone this repository today, you can run and inspect the public site and beta-signup infrastructure. You cannot run the Ceilord writing model locally from this codebase.
+If you clone this repository today, you can run and inspect the public site and the sign-up code. You cannot run the Ceilord writing model from it. Code to talk to the Ceilord API will be added here once the API is ready.
 
 ## Quick start
 
