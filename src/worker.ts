@@ -10,6 +10,18 @@ interface WorkerEnv extends DatabaseEnv {
 const MAX_BODY_BYTES = 2_000;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SIGNUP_NOTICE_VERSION = "2026-09-30-v2";
+const SEO_REDIRECTS = new Map<string, string>([
+  ["/blog/long-form-ai-writer", "/blog/how-do-you-keep-long-form-ai-writing-coherent"],
+  ["/blog/long-form-ai-writer.html", "/blog/how-do-you-keep-long-form-ai-writing-coherent"],
+  ["/blog/ai-writing-workflow", "/blog/how-does-an-ai-writing-workflow-work"],
+  ["/blog/ai-writing-workflow.html", "/blog/how-does-an-ai-writing-workflow-work"],
+  ["/blog/ai-writing-api", "/blog/what-should-you-look-for-in-an-ai-writing-api"],
+  ["/blog/ai-writing-api.html", "/blog/what-should-you-look-for-in-an-ai-writing-api"],
+  ["/blog/ai-writing-agent", "/blog/what-is-an-ai-writing-agent"],
+  ["/blog/ai-writing-agent.html", "/blog/what-is-an-ai-writing-agent"],
+  ["/blog/ai-content-generator-vs-writing-engine", "/blog/ai-content-generator-vs-ai-writing-engine"],
+  ["/blog/ai-content-generator-vs-writing-engine.html", "/blog/ai-content-generator-vs-ai-writing-engine"],
+]);
 
 function json(status: number, payload: Record<string, unknown>) {
   return Response.json(payload, {
@@ -141,6 +153,20 @@ async function handleBetaSignup(request: Request, env: WorkerEnv, ctx: Execution
 export default {
   async fetch(request: Request, env: WorkerEnv, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+
+    const redirectTarget = SEO_REDIRECTS.get(url.pathname);
+    if (redirectTarget && (request.method === "GET" || request.method === "HEAD")) {
+      const location = new URL(redirectTarget, url.origin);
+      location.search = url.search;
+      return new Response(null, {
+        status: 301,
+        headers: {
+          location: location.toString(),
+          "cache-control": "public, max-age=3600",
+        },
+      });
+    }
+
     if (url.pathname !== "/api/beta") return json(404, { error: "Not found." });
     if (request.method !== "POST") {
       return new Response(JSON.stringify({ error: "Method not allowed." }), {

@@ -8,7 +8,17 @@
     "directory": "./site",
     "binding": "ASSETS",
     "run_worker_first": [
-      "/api/*"
+      "/api/*",
+      "/blog/long-form-ai-writer",
+      "/blog/long-form-ai-writer.html",
+      "/blog/ai-writing-workflow",
+      "/blog/ai-writing-workflow.html",
+      "/blog/ai-writing-api",
+      "/blog/ai-writing-api.html",
+      "/blog/ai-writing-agent",
+      "/blog/ai-writing-agent.html",
+      "/blog/ai-content-generator-vs-writing-engine",
+      "/blog/ai-content-generator-vs-writing-engine.html"
     ]
   },
   "observability": {

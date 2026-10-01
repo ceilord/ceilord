@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#f8faff"/>
-  <path d="M18 32c0-8 6-14 14-14s14 6 14 14-6 14-14 14H18V32Z" fill="#2f6bff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ceilord">
+  <g fill="#1800ad">
+    <circle cx="22" cy="22" r="14"/>
+    <circle cx="42" cy="22" r="14"/>
+    <circle cx="22" cy="42" r="14"/>
+    <circle cx="42" cy="42" r="14"/>
+  </g>
+  <path fill="#ffffff" d="M32 22.5 35.5 28.5 41.5 32 35.5 35.5 32 41.5 28.5 35.5 22.5 32 28.5 28.5Z"/>
 </svg>
