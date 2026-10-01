@@ -25,7 +25,7 @@
       <g transform="translate(35 126)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Runs in your environment</text></g>
       <g transform="translate(35 164)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">You control storage, logs, access, and retention</text></g>
       <g transform="translate(35 202)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Writing does not pass through Ceilord's hosted API</text></g>
-      <g transform="translate(35 240)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Model-provider processing still applies</text></g>
+      <g transform="translate(35 240)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Self-hosted beta access opens in batches</text></g>
     </g>
   </g>
 </svg>

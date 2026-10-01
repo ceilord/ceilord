@@ -32,13 +32,13 @@ Use Ceilord as a managed hosted service or deploy it in your own environment.
 | Writing path | Through Ceilord's hosted service | Does not pass through Ceilord's hosted API |
 | Storage / logs | Service-managed | Controlled by your deployment |
 | Model provider | Managed by Ceilord | Called directly from your deployment with its credentials |
-| Availability | Hosted beta, access opens in batches | Distribution is not included in this repository yet |
+| Availability | Hosted beta, access opens in batches | Self-hosted beta, access opens in batches |
 
-**Self-hosted privacy boundary:** Ceilord does not receive the writing sent through a self-hosted deployment. The current engine calls Anthropic directly from the deployment, so Anthropic's data handling still applies. Self-hosted means Ceilord's hosted service is not in that request path; it does not mean no external model provider processes the request.
+**Self-hosted privacy boundary:** in the current self-hosted implementation, Ceilord does not receive the writing sent through the deployment. The engine calls Anthropic directly using the deployment's credentials, so Anthropic's data handling still applies. Self-hosted means Ceilord's hosted service is not in that request path; it does not mean no external model provider processes the request.
 
 ## This repository
 
-This repository currently contains the Ceilord website, hosted-access signup flow, Cloudflare Worker, database migrations, and deployment/security tooling. It does not yet include the self-hosted writing-engine distribution.
+This repository currently contains the Ceilord website, access signup flow, Cloudflare Worker, database migrations, and deployment/security tooling. The self-hosted beta distribution is opening separately in batches and is not included in this repository yet.
 
 ## Quick start
 
