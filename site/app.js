@@ -5,9 +5,9 @@
     id: "hero-headline-2026-09-30-v2",
     storageKey: "ceilord.hero-headline-2026-09-30-v2",
     variants: {
-      A: "An AI writer built around how humans actually build documents.",
-      B: "AI writing built from how humans structure real documents.",
-      C: "Long-form AI writing, built from the way humans actually write.",
+      A: "Undetectable AI that doesn't need a humanizer.",
+      B: "Writing built from real document structure.",
+      C: "Long-form writing, learned from how humans write.",
     },
   };
 
@@ -22,8 +22,13 @@
       // Storage can be unavailable in private/restricted browsing. Fall through to assignment.
     }
 
-    const keys = Object.keys(headlineExperiment.variants);
-    const assigned = keys[Math.floor(Math.random() * keys.length)];
+    const weights = { A: 50, B: 25, C: 25 };
+    let roll = Math.random() * 100;
+    let assigned = "A";
+    for (const [key, weight] of Object.entries(weights)) {
+      if (roll < weight) { assigned = key; break; }
+      roll -= weight;
+    }
     try {
       window.localStorage.setItem(headlineExperiment.storageKey, assigned);
     } catch {
@@ -38,12 +43,144 @@
   document.documentElement.dataset.headlineExperiment = headlineExperiment.id;
   document.documentElement.dataset.headlineVariant = activeHeadlineVariant;
 
+  const demoTasks = [
+    {
+      title: "Write an essay about the Great Depression.",
+      audience: "high school students",
+      length: "1,200 words",
+      tone: "clear, analytical",
+      mustCover: "causes · New Deal · recovery · lasting impact",
+    },
+    {
+      title: "Write a direct response sales letter for my brand.",
+      audience: "qualified prospects",
+      length: "700 words",
+      tone: "persuasive, specific",
+      mustCover: "problem · mechanism · proof · offer · CTA",
+    },
+    {
+      title: "Write a product launch article for our new reporting workspace.",
+      audience: "existing customers",
+      length: "900 words",
+      tone: "direct, clear",
+      mustCover: "setup · reporting · handoff · use cases",
+    },
+    {
+      title: "Write a founder story for my homepage.",
+      audience: "prospective customers",
+      length: "800 words",
+      tone: "personal, credible",
+      mustCover: "origin · tension · insight · product shift",
+    },
+  ];
+
+  const taskContent = document.querySelector("[data-job-task-content]");
+  const taskTitleContent = document.querySelector("[data-job-title-content]");
+  const taskTitleCursor = document.querySelector("[data-job-title-cursor]");
+  const taskAudience = document.querySelector("[data-job-audience]");
+  const taskLength = document.querySelector("[data-job-length]");
+  const taskTone = document.querySelector("[data-job-tone]");
+  const taskMustCover = document.querySelector("[data-job-must-cover]");
+  let activeTaskIndex = 0;
+
+  const textTypeOptions = {
+    typingSpeed: 18,
+    pauseDuration: 2500,
+    deletingSpeed: 12,
+    cursorBlinkDuration: 0.5,
+  };
+
+  function taskFields() {
+    return [
+      [taskTitleContent, "title"],
+      [taskAudience, "audience"],
+      [taskLength, "length"],
+      [taskTone, "tone"],
+      [taskMustCover, "mustCover"],
+    ];
+  }
+
+  function applyTask(task) {
+    if (!taskTitleContent || !taskAudience || !taskLength || !taskTone || !taskMustCover) return;
+    taskFields().forEach(([element, key]) => {
+      element.textContent = task[key];
+    });
+  }
+
+  function wait(ms) {
+    return new Promise((resolve) => window.setTimeout(resolve, ms));
+  }
+
+  async function typeTextType(element, text, speed) {
+    if (!element) return;
+    element.textContent = "";
+    for (let index = 0; index < text.length; index += 1) {
+      await wait(speed);
+      element.textContent += text[index];
+    }
+  }
+
+  async function deleteTextType(element, speed) {
+    if (!element) return;
+    while (element.textContent.length > 0) {
+      await wait(speed);
+      element.textContent = element.textContent.slice(0, -1);
+    }
+  }
+
+  async function typeTask(task) {
+    await Promise.all(
+      taskFields().map(([element, key]) =>
+        typeTextType(element, task[key], textTypeOptions.typingSpeed),
+      ),
+    );
+  }
+
+  async function deleteTask() {
+    await Promise.all(
+      taskFields().map(([element]) =>
+        deleteTextType(element, textTypeOptions.deletingSpeed),
+      ),
+    );
+  }
+
+  let taskRotationStarted = false;
+  async function startTaskRotation() {
+    if (taskRotationStarted || !taskContent || demoTasks.length < 2) return;
+    taskRotationStarted = true;
+
+    if (reduceMotion) {
+      applyTask(demoTasks[0]);
+      return;
+    }
+
+    while (taskRotationStarted) {
+      await wait(textTypeOptions.pauseDuration);
+      await deleteTask();
+      activeTaskIndex = (activeTaskIndex + 1) % demoTasks.length;
+      await typeTask(demoTasks[activeTaskIndex]);
+    }
+  }
+
+  void startTaskRotation();
+
   const GSAP = window.gsap;
   const ScrollTrigger = window.ScrollTrigger;
   const LenisCtor = window.Lenis;
 
   if (GSAP && ScrollTrigger) {
     GSAP.registerPlugin(ScrollTrigger);
+  }
+
+  if (GSAP && taskTitleCursor && !reduceMotion) {
+    GSAP.set(taskTitleCursor, { opacity: 1 });
+    GSAP.to(taskTitleCursor, {
+      opacity: 0,
+      duration: textTypeOptions.cursorBlinkDuration,
+      repeat: -1,
+      yoyo: true,
+      ease: "power2.inOut",
+    });
   }
 
   let lenis = null;
@@ -109,11 +246,13 @@
   }
 
   if (GSAP && !reduceMotion) {
-    GSAP.to("[data-mask-reveal]", {
+    const heroTimeline = GSAP.timeline();
+    heroTimeline.to("[data-mask-reveal]", {
       clipPath: "inset(0 0% 0 0)",
       duration: 0.78,
       ease: "power3.inOut",
     });
+    heroTimeline.call(() => void startTaskRotation());
 
     if (beamActive) {
       GSAP.set(beamActive, { strokeDasharray: "0.14 0.86", strokeDashoffset: 0 });
@@ -240,6 +379,7 @@
       step.classList.toggle("is-current", index === pipelineSteps.length - 1);
     });
     document.querySelectorAll("[data-new-step]").forEach((step) => step.classList.add("is-active"));
+    void startTaskRotation();
   }
 
   document.querySelectorAll("[data-beta-form]").forEach((form) => {
