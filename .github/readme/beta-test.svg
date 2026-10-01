@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="430" viewBox="0 0 1400 430" role="img" aria-labelledby="title desc">
+  <title id="title">Bring your real brief</title>
+  <desc id="desc">Run the same writing job through your current workflow and Ceilord, then compare how much operator intervention remains.</desc>
+  <rect width="1400" height="430" fill="#ffffff"/>
+  <text x="58" y="68" fill="#262626" font-family="Georgia, 'Times New Roman', serif" font-size="46">Bring your real brief.</text>
+  <text x="58" y="103" fill="#7d7d7d" font-family="Arial, Helvetica, sans-serif" font-size="17">Same writing job. Two workflows. Keep the one that leaves less work.</text>
+
+  <g transform="translate(58 150)">
+    <rect width="596" height="222" rx="22" fill="#ffffff" stroke="#e7e7e7"/>
+    <text x="30" y="44" fill="#62666d" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.1">YOUR CURRENT WORKFLOW</text>
+    <g transform="translate(34 91)" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#50555d">
+      <g><circle cx="10" cy="10" r="10" fill="#f1f2f4"/><text x="5.8" y="15" font-size="11" fill="#7b8087">1</text><text x="34" y="15">give the brief</text></g>
+      <g transform="translate(0 40)"><circle cx="10" cy="10" r="10" fill="#f1f2f4"/><text x="5.8" y="15" font-size="11" fill="#7b8087">2</text><text x="34" y="15">inspect the draft</text></g>
+      <g transform="translate(0 80)"><circle cx="10" cy="10" r="10" fill="#f1f2f4"/><text x="5.8" y="15" font-size="11" fill="#7b8087">3</text><text x="34" y="15">prompt again when needed</text></g>
+    </g>
+    <text x="352" y="134" fill="#a0a0a0" font-family="Arial, Helvetica, sans-serif" font-size="13">operator decides when it is done</text>
+  </g>
+
+  <g transform="translate(746 150)">
+    <rect width="596" height="222" rx="22" fill="#f4f6ff" stroke="#d9dcff"/>
+    <text x="30" y="44" fill="#3f49d8" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.1">CEILORD BETA</text>
+    <g transform="translate(34 91)" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#454b63">
+      <g><circle cx="10" cy="10" r="10" fill="#5863ea"/><path d="M6 10l3 3 5-6" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><text x="34" y="15">write from the brief</text></g>
+      <g transform="translate(0 40)"><circle cx="10" cy="10" r="10" fill="#5863ea"/><path d="M6 10l3 3 5-6" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><text x="34" y="15">check explicit requirements</text></g>
+      <g transform="translate(0 80)"><circle cx="10" cy="10" r="10" fill="#5863ea"/><path d="M6 10l3 3 5-6" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><text x="34" y="15">retry once or stop for review</text></g>
+    </g>
+    <text x="352" y="134" fill="#8389ab" font-family="Arial, Helvetica, sans-serif" font-size="13">current beta behavior</text>
+  </g>
+</svg>

@@ -9,23 +9,21 @@
   <a href="SECURITY.md">Security</a>
 </p>
 
-Ceilord is a from-scratch AI writing system focused on producing strong long-form writing from learned human-writing behavior. Give it a topic or brief and it produces the piece itself instead of treating post-generation rewriting or “humanizing” as the product.
+<p align="center"><strong>Private beta.</strong> Access opens in small batches.</p>
 
-**Access is private.** Ceilord is opening the product in small batches through [ceilord.com](https://ceilord.com/#access). The developer API and SDK are planned but are not public yet.
+<p align="center">
+  <img src=".github/readme/beta-test.svg" alt="Run the same real writing job through Ceilord and your current workflow" width="100%">
+</p>
 
-## What Ceilord does
+<p align="center"><strong><a href="https://ceilord.com/#access">Request private access →</a></strong></p>
 
-- **Starts from the job.** Give Ceilord the topic, brief, audience, constraints, context, and source material that matter.
-- **Produces the long-form piece.** The product is the writing itself, not a second-stage paraphraser or “humanizer.”
-- **Treats human writing as the reference domain.** Long-form quality, coherence, factuality, evidence fidelity, variation, and task fit matter independently.
+## About this repository
+
+This repository contains Ceilord's public-facing website and private-access signup infrastructure. The writing system itself stays private.
 
 <p align="center">
   <img src=".github/readme/boundary.svg" alt="What is public in this repository and what stays private in Ceilord" width="100%">
 </p>
-
-## What is in this repository?
-
-This repository is the public-facing web and signup layer around Ceilord. It is intentionally small.
 
 | Included here | Kept private |
 | --- | --- |

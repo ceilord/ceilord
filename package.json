@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Independent AI writing engine — give it a topic or brief, get finished writing back.",
+  "description": "Ceilord public site and private-access signup infrastructure.",
   "scripts": {
     "typecheck": "npm run cf:types && tsc --noEmit",
     "landing": "npm run site:vendor && tsx src/landingServer.ts",
