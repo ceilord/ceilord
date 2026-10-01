@@ -29,12 +29,12 @@ Use Ceilord as a managed hosted service or deploy it in your own environment.
 | --- | --- | --- |
 | Deployment | Ceilord-operated | Your environment |
 | Operations | Managed by Ceilord | Managed by your team |
-| Writing path | Through Ceilord's hosted service | Does not pass through Ceilord's hosted API |
+| Writing path | Through Ceilord's hosted service | **Your writing never touches Ceilord servers** |
 | Storage / logs | Service-managed | Controlled by your deployment |
 | Model provider | Managed by Ceilord | Called directly from your deployment with its credentials |
 | Availability | Hosted beta, access opens in batches | Self-hosted beta, access opens in batches |
 
-**Self-hosted privacy boundary:** in the current self-hosted implementation, Ceilord does not receive the writing sent through the deployment. The engine calls Anthropic directly using the deployment's credentials, so Anthropic's data handling still applies. Self-hosted means Ceilord's hosted service is not in that request path; it does not mean no external model provider processes the request.
+**Self-hosted privacy:** **your writing never touches Ceilord servers.** The engine runs in your environment and calls Anthropic directly using your deployment's credentials. Anthropic's data handling still applies.
 
 ## This repository
 

@@ -21,7 +21,7 @@
     <text x="30" y="44" fill="#3f49d8" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.1">SELF-HOSTED</text>
     <g transform="translate(34 91)" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#454b63">
       <g><circle cx="10" cy="10" r="10" fill="#5863ea"/><path d="M6 10l3 3 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="34" y="15">deploy in your own environment</text></g>
-      <g transform="translate(0 40)"><circle cx="10" cy="10" r="10" fill="#5863ea"/><path d="M6 10l3 3 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="34" y="15">Ceilord hosted API is not in the writing path</text></g>
+      <g transform="translate(0 40)"><circle cx="10" cy="10" r="10" fill="#5863ea"/><path d="M6 10l3 3 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="34" y="15">your writing never touches Ceilord servers</text></g>
       <g transform="translate(0 80)"><circle cx="10" cy="10" r="10" fill="#5863ea"/><path d="M6 10l3 3 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="34" y="15">you control storage, access, and retention</text></g>
     </g>
     <text x="408" y="189" fill="#8389ab" font-family="Arial, Helvetica, sans-serif" font-size="13">your environment</text>
