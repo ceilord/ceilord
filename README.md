@@ -1,85 +1,45 @@
-<h1 align="center">Ceilord</h1>
-
-<p align="center"><strong>AI writing for long-form work, built from real human-writing behavior.</strong></p>
-
 <p align="center">
-  Ceilord is being built to take a topic or brief and produce the writing itself, not to rewrite or "humanize" a finished AI draft.
-</p>
-
-<p align="center">
-  <a href="https://github.com/ceilord/ceilord/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/ceilord/ceilord/ci.yml?branch=master&label=CI" alt="CI"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-black" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/access-private-black" alt="Private access">
-  <img src="https://img.shields.io/badge/node-%3E%3D22-black" alt="Node 22+">
+  <img src=".github/readme/hero.svg" alt="Ceilord — long-form AI writing built from how real people write" width="100%">
 </p>
 
 <p align="center">
   <a href="https://ceilord.com">Website</a> ·
-  <a href="https://ceilord.com#access"><strong>Request private access</strong></a> ·
-  <a href="SECURITY.md">Security</a> ·
-  <a href="CONTRIBUTING.md">Contributing</a>
+  <a href="https://ceilord.com/#access"><strong>Request private access</strong></a> ·
+  <a href="#quick-start">Quick start</a> ·
+  <a href="SECURITY.md">Security</a>
 </p>
 
----
+Ceilord is a from-scratch AI writing system focused on producing strong long-form writing from learned human-writing behavior. Give it a topic or brief and it produces the piece itself instead of treating post-generation rewriting or “humanizing” as the product.
 
-## What is Ceilord?
+**Access is private.** Ceilord is opening the product in small batches through [ceilord.com](https://ceilord.com/#access). The developer API and SDK are planned but are not public yet.
 
-Ceilord is an AI that writes. You tell it what you need, and it writes the finished piece for you.
+## What Ceilord does
 
-**Right now it is in private beta.** You have to ask for access first, and it is free during the beta. It will open to everyone later.
+- **Starts from the job.** Give Ceilord the topic, brief, audience, constraints, context, and source material that matter.
+- **Produces the long-form piece.** The product is the writing itself, not a second-stage paraphraser or “humanizer.”
+- **Treats human writing as the reference domain.** Long-form quality, coherence, factuality, evidence fidelity, variation, and task fit matter independently.
 
-**[Ask for access at ceilord.com](https://ceilord.com)**
+<p align="center">
+  <img src=".github/readme/boundary.svg" alt="What is public in this repository and what stays private in Ceilord" width="100%">
+</p>
 
-## Two ways to use it
+## What is in this repository?
 
-| | **1. The Ceilord app** | **2. The Ceilord API** |
-| --- | --- | --- |
-| In plain words | Open the app, type what you need, get your writing | Your own app asks Ceilord to write for it |
-| Made for | Students and anyone who wants to write | Developers building their own product |
-| Your data | Kept by Ceilord | Kept in **your own private database** |
-| Who does the writing | Ceilord | **Ceilord** |
-| Cost | A monthly subscription | An API key from Ceilord |
-| Can you use it today? | Private beta, ask for access | **Not yet.** Planned |
+This repository is the public-facing web and signup layer around Ceilord. It is intentionally small.
 
-## The one rule you must know
-
-> **Your database can be yours. The writing always comes from Ceilord.**
->
-> The Ceilord writing model is not open source. It never runs on your computer. If you build your own app with your own database, your app still has to call the Ceilord API, so you always need a Ceilord API key.
-
-```text
-   THE APP                                  THE API
-
-   Student                                  Your app  ---- your own database
-      |                                        |            (private, yours)
-      v                                        |
-   Ceilord app                                 |  API key
-      |                                        |
-      +------------------+---------------------+
-                         v
-                   Ceilord API
-                         |
-                         v
-                Ceilord writing model
-              (private, run by Ceilord)
-```
-
-## What is inside this repository?
-
-This repository is only the **website and the sign-up code**. It is not the writing model.
-
-| In this repository | Not in this repository |
+| Included here | Kept private |
 | --- | --- |
-| The Ceilord website | The writing model |
-| The "get private access" sign-up | Its prompts and training writing |
-| Setup and deploy scripts | The Ceilord app |
-| Database migrations | API keys and billing |
+| Website and legal pages | Ceilord application |
+| Private-access signup flow | Writing model and internal writing system |
+| Cloudflare Worker | Prompts and reference-writing data |
+| Turso/libSQL migrations | Production credentials and user data |
+| Deployment and security tooling | Developer API / SDK until released |
 
-If you clone this repository today, you can run and inspect the public site and the sign-up code. You cannot run the Ceilord writing model from it. Code to talk to the Ceilord API will be added here once the API is ready.
+Cloning this repository lets you run and inspect the website and signup infrastructure. It does **not** run the Ceilord writing system locally.
 
 ## Quick start
 
-Requires **Node.js 22 or newer**.
+Requires **Node.js 22+**.
 
 ```sh
 git clone https://github.com/ceilord/ceilord.git
@@ -90,7 +50,7 @@ npm run landing
 
 Open `http://127.0.0.1:4770`.
 
-The local preview keeps beta requests in `~/.ceilord/beta-signups.jsonl`, so the signup flow works without a Cloudflare or Turso account.
+The local preview stores beta requests in `~/.ceilord/beta-signups.jsonl`, so the signup flow works without Cloudflare or Turso credentials.
 
 Run the repository checks with:
 
@@ -98,7 +58,8 @@ Run the repository checks with:
 npm run check
 ```
 
-## How the public stack works
+<details>
+<summary><strong>How the public stack works</strong></summary>
 
 ```mermaid
 flowchart LR
@@ -109,13 +70,13 @@ flowchart LR
     A --> E["Confirmation email"]
 ```
 
-The public stack is deliberately small:
-
-- `site/` contains the static website, legal pages, styles, and client-side JavaScript.
+- `site/` contains the website, legal pages, styles, and client-side JavaScript.
 - `src/worker.ts` serves the site and handles `POST /api/beta`.
-- beta requests require explicit consent and are stored with the accepted notice version.
+- beta requests require explicit consent and retain the accepted notice version.
 - duplicate addresses receive the same public response as new addresses, reducing list-probing risk.
-- production database credentials live in Cloudflare secrets, never in tracked files.
+- production database credentials live in Cloudflare secrets, never tracked files.
+
+</details>
 
 ## Project layout
 
@@ -129,18 +90,19 @@ The public stack is deliberately small:
 | `scripts/` | Deployment, migration, vendoring, and security checks |
 | `wrangler.jsonc` | Cloudflare Workers configuration |
 
-## Deploying your own copy
+<details>
+<summary><strong>Deployment</strong></summary>
 
-The public site and signup Worker are designed for Cloudflare Workers Static Assets with Turso/libSQL persistence.
+The public site is designed for Cloudflare Workers Static Assets with Turso/libSQL persistence.
 
-Set secrets through Wrangler rather than committing them:
+Set database credentials as Worker secrets rather than committing them:
 
 ```sh
 npx wrangler secret put TURSO_DATABASE_URL --env=
 npx wrangler secret put TURSO_AUTH_TOKEN --env=
 ```
 
-`RESEND_API_KEY` is optional and enables the confirmation email when configured.
+`RESEND_API_KEY` is optional and enables confirmation email when configured.
 
 Then migrate the explicitly selected database and deploy:
 
@@ -150,13 +112,13 @@ npm run db:migrate
 npm run cf:deploy
 ```
 
-See [CLOUDFLARE.md](CLOUDFLARE.md) for environment-specific setup and deployment guards.
+See [CLOUDFLARE.md](CLOUDFLARE.md) for the complete deployment runbook.
+
+</details>
 
 ## Security
 
 Do not open public issues for suspected vulnerabilities or exposed credentials. Follow [SECURITY.md](SECURITY.md) for private reporting instructions.
-
-The repository includes checks for secret leakage and production dependency issues:
 
 ```sh
 npm run security:secrets
