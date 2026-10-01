@@ -4,27 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/ceilord-mark-v2.svg" type="image/svg+xml">
   <link rel="canonical" href="https://ceilord.com/">
   <meta name="description" content="Ceilord is a long-form AI writer built around patterns in real human writing, from document structure to paragraph and sentence moves.">
-  <meta property="og:title" content="Ceilord | An AI writer built around how humans actually build documents.">
+  <meta property="og:title" content="Ceilord | Undetectable AI that doesn't need a humanizer.">
   <meta property="og:description" content="Ceilord uses patterns in real human writing to guide long-form generation step by step instead of rewriting a finished AI draft afterward.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ceilord.com/">
   <meta property="og:site_name" content="Ceilord">
-  <title>Ceilord | An AI writer built around how humans actually build documents.</title>
+  <title>Ceilord | Undetectable AI that doesn't need a humanizer.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/vendor/lenis.css">
-  <link rel="stylesheet" href="/styles.css?v=20261001-02">
+  <link rel="stylesheet" href="/styles-flowers-v8.css?v=20261001-02">
 </head>
 <body>
   <header class="site-header">
     <div class="site-header-inner shell">
-      <a class="brand" href="#top" aria-label="Ceilord home">ceilord</a>
+      <a class="brand" href="#top" aria-label="Ceilord home"><img class="brand-mark" src="/ceilord-mark-v2.svg" alt=""><span>ceilord</span></a>
       <div class="header-actions">
-        <a class="header-link" href="#access">private beta</a>
         <a class="header-github" href="https://github.com/ceilord/ceilord" target="_blank" rel="noopener" aria-label="Ceilord on GitHub"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
       </div>
     </div>
@@ -33,7 +32,7 @@
   <main id="top">
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <h1 id="hero-title" data-mask-reveal data-headline-test>An AI writer built around how humans actually build documents.</h1>
+        <h1 id="hero-title" data-mask-reveal data-headline-test>Undetectable AI that doesn't need a humanizer.</h1>
         <p class="hero-sub" data-headline-sub>Ceilord maps patterns in real human writing—from document structure to paragraph and sentence moves—and uses them to guide long-form generation step by step, instead of generating a full AI draft and rewriting it afterward.</p>
 
         <form class="beta-form hero-form" data-beta-form novalidate>
@@ -47,7 +46,7 @@
             <input type="checkbox" name="consent" value="yes" required>
             <span>I agree to the <a href="/terms-of-service.html">Terms</a> and ask Ceilord to use my email for this beta request and beta-access updates, as explained in the <a href="/privacy-policy.html">Privacy Policy</a>.</span>
           </label>
-          <p class="form-note" data-form-note>Free private beta for content teams already using AI. No card.</p>
+          <p class="form-note" data-form-note></p>
         </form>
       </div>
 
@@ -55,15 +54,21 @@
         <div class="job-topline">
           <span>writing job / example</span>
           <span class="job-status"><i aria-hidden="true"></i><span data-job-status>checking</span></span>
+          <span class="agent-connect-pill" aria-label="Connect your agent to Ceilord with Claude, Codex, Cursor, or OpenCode" title="Claude · Codex · Cursor · OpenCode">
+            <span class="agent-pill-copy">Connect your agent to Ceilord</span>
+            <img class="agent-pill-logos" src="/agent-logos.png" alt="Claude, Codex, Cursor, and OpenCode">
+          </span>
         </div>
 
         <div class="job-brief">
-          <p>Write a launch article for content leads about the new reporting workspace.</p>
-          <div class="job-spec" aria-label="Brief requirements">
-            <div><span>audience</span><strong>content leads</strong></div>
-            <div><span>length</span><strong>900 words</strong></div>
-            <div><span>tone</span><strong>direct, specific</strong></div>
-            <div><span>must cover</span><strong>setup · reporting · handoff</strong></div>
+          <div class="job-task-content" data-job-task-content>
+            <p class="text-type" data-job-title><span class="text-type__content" data-job-title-content>Write an essay about the Great Depression.</span><span class="text-type__cursor" data-job-title-cursor aria-hidden="true">_</span></p>
+            <div class="job-spec" aria-label="Job requirements">
+              <div><span>audience</span><strong data-job-audience>high school students</strong></div>
+              <div><span>length</span><strong data-job-length>1,200 words</strong></div>
+              <div><span>tone</span><strong data-job-tone>clear, analytical</strong></div>
+              <div><span>must cover</span><strong data-job-must-cover>causes · New Deal · recovery · lasting impact</strong></div>
+            </div>
           </div>
         </div>
 
@@ -72,7 +77,7 @@
             <path class="beam-base" data-beam-path></path>
             <path class="beam-active" data-beam-active></path>
           </svg>
-          <div class="pipeline-step" data-pipeline-step><span class="step-dot"></span><span>brief</span></div>
+          <div class="pipeline-step" data-pipeline-step><span class="step-dot"></span><span>request</span></div>
           <div class="pipeline-step" data-pipeline-step><span class="step-dot"></span><span>write</span></div>
           <div class="pipeline-step is-current" data-pipeline-step><span class="step-dot"></span><span>check</span></div>
           <div class="pipeline-step" data-pipeline-step><span class="step-dot"></span><span>result</span></div>
@@ -89,15 +94,15 @@
 
     <section class="contrast shell" id="how" aria-labelledby="contrast-title">
       <div class="contrast-copy">
-        <h2 id="contrast-title">You still carry <br>the job.</h2>
-        <p>The model can write. In a blank chat, you still carry the brief, misses, corrections and acceptance bar. Ceilord is built to take more of that operational loop.</p>
+        <h2 id="contrast-title">Carry less <br>of the job.</h2>
+        <p>The model can write. In a blank chat, you still carry the instructions, misses, corrections and acceptance bar. Ceilord is built to take more of that operational loop.</p>
       </div>
 
       <div class="workflow-compare" data-workflow-compare>
         <div class="workflow-column workflow-old">
           <h3>Blank chat</h3>
           <ol>
-            <li data-old-step><span>01</span><strong>Brief</strong></li>
+            <li data-old-step><span>01</span><strong>Request</strong></li>
             <li data-old-step><span>02</span><strong>Draft</strong></li>
             <li data-old-step><span>03</span><strong>Inspect</strong></li>
             <li data-old-step><span>04</span><strong>Find the misses</strong></li>
@@ -108,9 +113,14 @@
         </div>
 
         <div class="workflow-column workflow-ceilord">
+          <div class="workflow-flower-cluster" aria-hidden="true">
+            <img src="/ceilord-mark-v2.svg" alt="">
+            <img src="/ceilord-mark-v2.svg" alt="">
+            <img src="/ceilord-mark-v2.svg" alt="">
+          </div>
           <h3>Ceilord job</h3>
           <ol>
-            <li data-new-step><span>01</span><strong>Brief</strong></li>
+            <li data-new-step><span>01</span><strong>Request</strong></li>
             <li data-new-step><span>02</span><strong>Write</strong></li>
             <li data-new-step><span>03</span><strong>Independent check</strong></li>
             <li data-new-step><span>04</span><strong>Retry once if needed</strong></li>
@@ -123,7 +133,7 @@
 
     <section class="proof shell" aria-labelledby="proof-title">
       <div class="proof-heading">
-        <h2 id="proof-title">Not a vague <br>quality score.</h2>
+        <h2 id="proof-title">Checked against <br>your instructions.</h2>
         <p>Generation and QA are separate model calls. The checker uses explicit criteria from the job, then Ceilord retries once or stops.</p>
       </div>
 
@@ -133,7 +143,7 @@
             <span>Call 01 / write</span>
             <span>engine path</span>
           </div>
-          <h3>The writing call gets the instructions and provided requirements, then produces the piece itself.</h3>
+          <h3>Your instructions in, finished writing out.</h3>
           <p>No “help me write this” chat loop. The generation call is asked to address every part and match the requested length or format when one is stated.</p>
           <div class="proof-sequence" aria-label="Current beta behavior">
             <div><span>01</span><strong>write</strong><em>completed work</em></div>
@@ -158,7 +168,7 @@
 
     <section class="access shell" id="access" aria-labelledby="access-title">
       <div class="access-copy">
-        <h2 id="access-title">Bring your <br>real brief.</h2>
+        <h2 id="access-title">Keep whichever <br>leaves less work.</h2>
         <p>Run the same writing job through Ceilord and your current workflow. Keep the one that leaves less work.</p>
       </div>
 
@@ -180,11 +190,11 @@
     <section class="answers shell" aria-label="Short answers">
       <details>
         <summary>Why not just use ChatGPT or Claude?<span aria-hidden="true"></span></summary>
-        <p>You can. The beta question is narrower: can Ceilord get the same real writing job to an acceptable result with less operator intervention? Bring a brief you already know and compare the workflows.</p>
+        <p>You can. The beta question is narrower: can Ceilord get the same real writing job to an acceptable result with less operator intervention? Bring a writing job you already know and compare the workflows.</p>
       </details>
       <details>
         <summary>Is Ceilord a rewriting tool?<span aria-hidden="true"></span></summary>
-        <p>No. Give it a topic, brief, instructions, context, or constraints. Ceilord writes the piece itself.</p>
+        <p>No. Give it a topic, instructions, context, or constraints. Ceilord writes the piece itself.</p>
       </details>
       <details>
         <summary>Is the API live?<span aria-hidden="true"></span></summary>
@@ -201,7 +211,7 @@
     <div class="footer-inner shell" data-footer-inner>
       <div class="footer-topline">
         <div>
-          <a class="footer-brand" href="#top">ceilord</a>
+          <a class="footer-brand" href="#top"><img class="brand-mark" src="/ceilord-mark-v2.svg" alt=""><span>ceilord</span></a>
           <p>Give it the writing job.</p>
         </div>
         <a class="footer-cta" href="#access">private beta ↗</a>

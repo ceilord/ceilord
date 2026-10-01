@@ -5,11 +5,68 @@
     id: "hero-headline-2026-09-30-v2",
     storageKey: "ceilord.hero-headline-2026-09-30-v2",
     variants: {
-      A: "An AI writer built around how humans actually build documents.",
-      B: "AI writing built from how humans structure real documents.",
-      C: "Long-form AI writing, built from the way humans actually write.",
+      A: "Undetectable AI that doesn't need a humanizer.",
+      B: "Writing built from real document structure.",
+      C: "Long-form writing, learned from how humans write.",
     },
   };
+
+  const layoutExperiment = {
+    id: "hero-layout-2026-09-29-v1",
+    storageKey: "ceilord.hero-layout-2026-09-29-v1",
+    variants: ["A", "B"],
+  };
+
+  const demoTasks = [
+    {
+      title: "Write an essay about the Great Depression.",
+      audience: "high school students",
+      length: "1,200 words",
+      tone: "clear, analytical",
+      mustCover: "causes · New Deal · recovery · lasting impact",
+    },
+    {
+      title: "Write a direct response sales letter for my brand.",
+      audience: "qualified prospects",
+      length: "700 words",
+      tone: "persuasive, specific",
+      mustCover: "problem · mechanism · proof · offer · CTA",
+    },
+    {
+      title: "Write a product launch article for our new reporting workspace.",
+      audience: "existing customers",
+      length: "900 words",
+      tone: "direct, clear",
+      mustCover: "setup · reporting · handoff · use cases",
+    },
+    {
+      title: "Write a founder story for my homepage.",
+      audience: "prospective customers",
+      length: "800 words",
+      tone: "personal, credible",
+      mustCover: "origin · tension · insight · product shift",
+    },
+  ];
+
+  function stableVariant(storageKey, variants, forcedParam) {
+    const forced = new URLSearchParams(window.location.search).get(forcedParam)?.toUpperCase();
+    if (forced && variants.includes(forced)) return forced;
+
+    try {
+      const stored = window.localStorage.getItem(storageKey);
+      if (stored && variants.includes(stored)) return stored;
+    } catch {
+      // Storage can be unavailable in private/restricted browsing.
+    }
+
+    const assigned = variants[Math.floor(Math.random() * variants.length)];
+    try {
+      window.localStorage.setItem(storageKey, assigned);
+    } catch {
+      // The assigned variant still applies for this page view.
+    }
+    return assigned;
+  }
 
   function headlineVariant() {
     const forced = new URLSearchParams(window.location.search).get("headline")?.toUpperCase();
@@ -22,8 +79,14 @@
       // Storage can be unavailable in private/restricted browsing. Fall through to assignment.
     }
 
-    const keys = Object.keys(headlineExperiment.variants);
-    const assigned = keys[Math.floor(Math.random() * keys.length)];
+    // A gets half of visitors, B and C a quarter each.
+    const weights = { A: 50, B: 25, C: 25 };
+    let roll = Math.random() * 100;
+    let assigned = "A";
+    for (const [key, weight] of Object.entries(weights)) {
+      if (roll < weight) { assigned = key; break; }
+      roll -= weight;
+    }
     try {
       window.localStorage.setItem(headlineExperiment.storageKey, assigned);
     } catch {
@@ -33,10 +96,144 @@
   }
 
   const activeHeadlineVariant = headlineVariant();
+  const activeLayoutVariant = stableVariant(
+    layoutExperiment.storageKey,
+    layoutExperiment.variants,
+    "layout",
+  );
   const headline = document.querySelector("[data-headline-test]");
   if (headline) headline.textContent = headlineExperiment.variants[activeHeadlineVariant];
   document.documentElement.dataset.headlineExperiment = headlineExperiment.id;
   document.documentElement.dataset.headlineVariant = activeHeadlineVariant;
+  document.documentElement.dataset.layoutExperiment = layoutExperiment.id;
+  document.documentElement.dataset.layoutVariant = activeLayoutVariant;
+
+  async function recordExperimentExposure(experiment, variant, forcedParam) {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("headline") || params.has("layout") || params.has(forcedParam)) return;
+
+    const exposureKey = experiment.storageKey + ".exposed";
+    try {
+      if (window.localStorage.getItem(exposureKey) === variant) return;
+    } catch {
+      // Continue with an anonymous aggregate count if storage is unavailable.
+    }
+
+    try {
+      const response = await fetch("/api/experiment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          experiment: experiment.id,
+          variant,
+          metric: "exposure",
+        }),
+        keepalive: true,
+      });
+      if (response.ok) {
+        try {
+          window.localStorage.setItem(exposureKey, variant);
+        } catch {
+          // No persistent marker available; the page still works normally.
+        }
+      }
+    } catch {
+      // Experiment telemetry must never block the landing page.
+    }
+  }
+
+  void recordExperimentExposure(headlineExperiment, activeHeadlineVariant, "headline");
+  void recordExperimentExposure(layoutExperiment, activeLayoutVariant, "layout");
+
+  const taskContent = document.querySelector("[data-job-task-content]");
+  const taskTitleContent = document.querySelector("[data-job-title-content]");
+  const taskTitleCursor = document.querySelector("[data-job-title-cursor]");
+  const taskAudience = document.querySelector("[data-job-audience]");
+  const taskLength = document.querySelector("[data-job-length]");
+  const taskTone = document.querySelector("[data-job-tone]");
+  const taskMustCover = document.querySelector("[data-job-must-cover]");
+  let activeTaskIndex = 0;
+
+  const textTypeOptions = {
+    typingSpeed: 18,
+    pauseDuration: 2500,
+    deletingSpeed: 12,
+    cursorBlinkDuration: 0.5,
+  };
+
+  function taskFields() {
+    return [
+      [taskTitleContent, "title"],
+      [taskAudience, "audience"],
+      [taskLength, "length"],
+      [taskTone, "tone"],
+      [taskMustCover, "mustCover"],
+    ];
+  }
+
+  function applyTask(task) {
+    if (!taskTitleContent || !taskAudience || !taskLength || !taskTone || !taskMustCover) return;
+    taskFields().forEach(([element, key]) => {
+      element.textContent = task[key];
+    });
+  }
+
+  function wait(ms) {
+    return new Promise((resolve) => window.setTimeout(resolve, ms));
+  }
+
+  async function typeTextType(element, text, speed) {
+    if (!element) return;
+    element.textContent = "";
+    for (let index = 0; index < text.length; index += 1) {
+      await wait(speed);
+      element.textContent += text[index];
+    }
+  }
+
+  async function deleteTextType(element, speed) {
+    if (!element) return;
+    while (element.textContent.length > 0) {
+      await wait(speed);
+      element.textContent = element.textContent.slice(0, -1);
+    }
+  }
+
+  async function typeTask(task) {
+    await Promise.all(
+      taskFields().map(([element, key]) =>
+        typeTextType(element, task[key], textTypeOptions.typingSpeed),
+      ),
+    );
+  }
+
+  async function deleteTask() {
+    await Promise.all(
+      taskFields().map(([element]) =>
+        deleteTextType(element, textTypeOptions.deletingSpeed),
+      ),
+    );
+  }
+
+  let taskRotationStarted = false;
+  async function startTaskRotation() {
+    if (taskRotationStarted || !taskContent || demoTasks.length < 2) return;
+    taskRotationStarted = true;
+
+    if (reduceMotion) {
+      applyTask(demoTasks[0]);
+      return;
+    }
+
+    while (taskRotationStarted) {
+      // React Bits TextType semantics: full text -> pause -> character deletion ->
+      // advance to the next string -> character typing.
+      await wait(textTypeOptions.pauseDuration);
+      await deleteTask();
+      activeTaskIndex = (activeTaskIndex + 1) % demoTasks.length;
+      await typeTask(demoTasks[activeTaskIndex]);
+    }
+  }
 
   const GSAP = window.gsap;
   const ScrollTrigger = window.ScrollTrigger;
@@ -44,6 +241,17 @@
 
   if (GSAP && ScrollTrigger) {
     GSAP.registerPlugin(ScrollTrigger);
+  }
+
+  if (GSAP && taskTitleCursor && !reduceMotion) {
+    GSAP.set(taskTitleCursor, { opacity: 1 });
+    GSAP.to(taskTitleCursor, {
+      opacity: 0,
+      duration: textTypeOptions.cursorBlinkDuration,
+      repeat: -1,
+      yoyo: true,
+      ease: "power2.inOut",
+    });
   }
 
   let lenis = null;
@@ -77,6 +285,8 @@
 
   // Port of the local AnimatedBeam pattern for the static Ceilord landing page.
   // The line itself has meaning: it connects the four real stages shown in the UI.
+  const jobPanel = document.querySelector("[data-job-panel]");
+  const jobStatus = document.querySelector("[data-job-status]");
   const pipeline = document.querySelector("[data-pipeline]");
   const beamBase = document.querySelector("[data-beam-path]");
   const beamActive = document.querySelector("[data-beam-active]");
@@ -109,13 +319,34 @@
   }
 
   if (GSAP && !reduceMotion) {
-    GSAP.to("[data-mask-reveal]", {
+    const heroTimeline = GSAP.timeline();
+
+    if (activeLayoutVariant === "B" && jobPanel) {
+      const panelRect = jobPanel.getBoundingClientRect();
+      const startY = Math.max(window.innerHeight - panelRect.top + 48, 240);
+      GSAP.set(jobPanel, { y: startY });
+      if (jobStatus) jobStatus.textContent = "live demo";
+    }
+
+    heroTimeline.to("[data-mask-reveal]", {
       clipPath: "inset(0 0% 0 0)",
       duration: 0.78,
       ease: "power3.inOut",
     });
 
-    if (beamActive) {
+    if (activeLayoutVariant === "B" && jobPanel) {
+      heroTimeline.to({}, { duration: 0.16 });
+      heroTimeline.to(jobPanel, {
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+      heroTimeline.call(() => void startTaskRotation());
+    } else {
+      heroTimeline.call(() => void startTaskRotation());
+    }
+
+    if (beamActive && activeLayoutVariant !== "B") {
       GSAP.set(beamActive, { strokeDasharray: "0.14 0.86", strokeDashoffset: 0 });
       GSAP.to(beamActive, {
         strokeDashoffset: -1,
@@ -126,10 +357,11 @@
     }
 
     const qaRows = Array.from(document.querySelectorAll("[data-qa-row]"));
-    GSAP.set(qaRows, { clipPath: "inset(0 100% 0 0)" });
+    if (activeLayoutVariant !== "B") {
+      GSAP.set(qaRows, { clipPath: "inset(0 100% 0 0)" });
+    }
 
-    const jobStatus = document.querySelector("[data-job-status]");
-    const jobTimeline = GSAP.timeline({ delay: 0.35 });
+    const jobTimeline = GSAP.timeline({ delay: 0.35, paused: activeLayoutVariant === "B" });
 
     pipelineSteps.forEach((step, index) => {
       if (index === 0) {
@@ -235,6 +467,8 @@
     document.querySelectorAll("[data-mask-reveal]").forEach((el) => {
       el.style.clipPath = "none";
     });
+    if (activeLayoutVariant === "B" && jobStatus) jobStatus.textContent = "live demo";
+    void startTaskRotation();
     pipelineSteps.forEach((step, index) => {
       step.classList.toggle("is-complete", index < pipelineSteps.length - 1);
       step.classList.toggle("is-current", index === pipelineSteps.length - 1);
@@ -282,6 +516,8 @@
             company: honey ? honey.value : "",
             headlineExperiment: headlineExperiment.id,
             headlineVariant: activeHeadlineVariant,
+            layoutExperiment: layoutExperiment.id,
+            layoutVariant: activeLayoutVariant,
             consent: consent.checked,
             noticeVersion: "2026-09-30-v2",
           }),
