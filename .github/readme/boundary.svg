@@ -1,31 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="470" viewBox="0 0 1400 470" role="img" aria-labelledby="title desc">
-  <title id="title">What is public and what stays private in Ceilord</title>
-  <desc id="desc">The public repository contains the website, beta signup, migrations and deployment tooling. The Ceilord product, writing model, API and internal writing system remain private.</desc>
+  <title id="title">Hosted and self-hosted Ceilord deployment</title>
+  <desc id="desc">A deployment comparison between Ceilord-hosted service and a self-hosted installation.</desc>
   <rect width="1400" height="470" fill="#ffffff"/>
-  <text x="54" y="65" fill="#252525" font-family="Georgia, 'Times New Roman', serif" font-size="44">A small public surface.</text>
-  <text x="54" y="99" fill="#858585" font-family="Arial, Helvetica, sans-serif" font-size="17">The repository is inspectable. The writing system is not.</text>
+  <text x="54" y="65" fill="#252525" font-family="Georgia, 'Times New Roman', serif" font-size="44">Two deployment models.</text>
+  <text x="54" y="99" fill="#858585" font-family="Arial, Helvetica, sans-serif" font-size="17">Same product direction. Different control over infrastructure and data flow.</text>
 
   <g transform="translate(54 142)">
     <rect width="610" height="270" rx="22" fill="#ffffff" stroke="#e2e5e9"/>
-    <text x="30" y="47" fill="#51565e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">THIS REPOSITORY</text>
-    <text x="30" y="82" fill="#8b9098" font-family="Arial, Helvetica, sans-serif" font-size="13">Public-facing infrastructure</text>
+    <text x="30" y="47" fill="#51565e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">HOSTED</text>
+    <text x="30" y="82" fill="#8b9098" font-family="Arial, Helvetica, sans-serif" font-size="13">Ceilord operates the service</text>
     <g font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#383d44">
-      <g transform="translate(35 126)"><circle r="9" fill="#eef1f5"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#737b86" stroke-width="1.5"/><text x="23" y="5">Website and legal pages</text></g>
-      <g transform="translate(35 164)"><circle r="9" fill="#eef1f5"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#737b86" stroke-width="1.5"/><text x="23" y="5">Private-access signup flow</text></g>
-      <g transform="translate(35 202)"><circle r="9" fill="#eef1f5"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#737b86" stroke-width="1.5"/><text x="23" y="5">Database migrations</text></g>
-      <g transform="translate(35 240)"><circle r="9" fill="#eef1f5"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#737b86" stroke-width="1.5"/><text x="23" y="5">Deployment and security tooling</text></g>
+      <g transform="translate(35 126)"><circle r="9" fill="#eef1f5"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#737b86" stroke-width="1.5"/><text x="23" y="5">Ceilord-managed deployment</text></g>
+      <g transform="translate(35 164)"><circle r="9" fill="#eef1f5"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#737b86" stroke-width="1.5"/><text x="23" y="5">Managed updates and operations</text></g>
+      <g transform="translate(35 202)"><circle r="9" fill="#eef1f5"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#737b86" stroke-width="1.5"/><text x="23" y="5">Writing requests reach Ceilord's hosted service</text></g>
+      <g transform="translate(35 240)"><circle r="9" fill="#eef1f5"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#737b86" stroke-width="1.5"/><text x="23" y="5">Hosted access opens in batches</text></g>
     </g>
   </g>
 
   <g transform="translate(736 142)">
     <rect width="610" height="270" rx="22" fill="#f6f7ff" stroke="#ccd3ff"/>
-    <text x="30" y="47" fill="#4951bc" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">PRIVATE CEILORD</text>
-    <text x="30" y="82" fill="#7f85ad" font-family="Arial, Helvetica, sans-serif" font-size="13">Product and writing system</text>
+    <text x="30" y="47" fill="#4951bc" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">SELF-HOSTED</text>
+    <text x="30" y="82" fill="#7f85ad" font-family="Arial, Helvetica, sans-serif" font-size="13">You operate the deployment</text>
     <g font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#40455b">
-      <g transform="translate(35 126)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Ceilord application</text></g>
-      <g transform="translate(35 164)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Writing model and internal system</text></g>
-      <g transform="translate(35 202)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Prompts and reference-writing data</text></g>
-      <g transform="translate(35 240)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Developer API / SDK until released</text></g>
+      <g transform="translate(35 126)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Runs in your environment</text></g>
+      <g transform="translate(35 164)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">You control storage, logs, access, and retention</text></g>
+      <g transform="translate(35 202)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Writing does not pass through Ceilord's hosted API</text></g>
+      <g transform="translate(35 240)"><circle r="9" fill="#5863ea"/><path d="M-3 0l2 2 5-6" fill="none" stroke="#fff" stroke-width="1.5"/><text x="23" y="5">Model-provider processing still applies</text></g>
     </g>
   </g>
 </svg>

@@ -4,36 +4,41 @@
 
 <p align="center">
   <a href="https://ceilord.com">Website</a> ·
-  <a href="https://ceilord.com/#access"><strong>Request private access</strong></a> ·
+  <a href="https://ceilord.com/#access"><strong>Request hosted access</strong></a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="SECURITY.md">Security</a>
 </p>
 
-<p align="center"><strong>Private beta.</strong> Access opens in small batches.</p>
+<p align="center"><strong>Hosted beta.</strong> Access opens in small batches.</p>
 
 <p align="center">
-  <img src=".github/readme/beta-test.svg" alt="Run the same real writing job through Ceilord and your current workflow" width="100%">
+  <img src=".github/readme/beta-test.svg" alt="Choose Ceilord hosted by Ceilord or deployed in your own environment" width="100%">
 </p>
 
-<p align="center"><strong><a href="https://ceilord.com/#access">Request private access →</a></strong></p>
+<p align="center"><strong><a href="https://ceilord.com/#access">Request hosted access →</a></strong></p>
 
-## About this repository
+## Hosted or self-hosted
 
-This repository contains Ceilord's public-facing website and private-access signup infrastructure. The writing system itself stays private.
+Use Ceilord as a managed hosted service or deploy it in your own environment.
 
 <p align="center">
-  <img src=".github/readme/boundary.svg" alt="What is public in this repository and what stays private in Ceilord" width="100%">
+  <img src=".github/readme/boundary.svg" alt="Hosted and self-hosted Ceilord deployment options" width="100%">
 </p>
 
-| Included here | Kept private |
-| --- | --- |
-| Website and legal pages | Ceilord application |
-| Private-access signup flow | Writing model and internal writing system |
-| Cloudflare Worker | Prompts and reference-writing data |
-| Turso/libSQL migrations | Production credentials and user data |
-| Deployment and security tooling | Developer API / SDK until released |
+| | Hosted by Ceilord | Self-hosted |
+| --- | --- | --- |
+| Deployment | Ceilord-operated | Your environment |
+| Operations | Managed by Ceilord | Managed by your team |
+| Writing path | Through Ceilord's hosted service | Does not pass through Ceilord's hosted API |
+| Storage / logs | Service-managed | Controlled by your deployment |
+| Model provider | Managed by Ceilord | Called directly from your deployment with its credentials |
+| Availability | Hosted beta, access opens in batches | Distribution is not included in this repository yet |
 
-Cloning this repository lets you run and inspect the website and signup infrastructure. It does **not** run the Ceilord writing system locally.
+**Self-hosted privacy boundary:** Ceilord does not receive the writing sent through a self-hosted deployment. The current engine calls Anthropic directly from the deployment, so Anthropic's data handling still applies. Self-hosted means Ceilord's hosted service is not in that request path; it does not mean no external model provider processes the request.
+
+## This repository
+
+This repository currently contains the Ceilord website, hosted-access signup flow, Cloudflare Worker, database migrations, and deployment/security tooling. It does not yet include the self-hosted writing-engine distribution.
 
 ## Quick start
 
