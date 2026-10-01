@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".github/readme/hero.svg" alt="Ceilord — long-form AI writing built from how real people write" width="100%">
+  <img src=".github/readme/hero.png" alt="Ceilord — long-form AI writing built from how real people write" width="100%">
 </p>
 
 <p align="center">
