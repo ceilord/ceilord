@@ -16,22 +16,90 @@
   <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
-Ceilord is a from-scratch AI writing system aimed at strong long-form writing, learned from real human writing behavior instead of generating a draft and rewriting it afterward to sound human.
+## Ceilord in one minute
 
-> **Private beta. Request access first.**
-> Ceilord is not open to everyone yet. Access opens in small batches, and the beta is free with no card. It will become available to everyone later. **[Request private access at ceilord.com](https://ceilord.com)**.
+| | |
+| --- | --- |
+| **What it is** | An AI writing engine. You give it a topic or a brief, and it writes the finished piece. It is not a rewriting or "humanizing" tool. |
+| **How it differs from a blank chat** | In a chat you carry the brief, the misses and the final check. Ceilord runs that loop: it writes, checks the result with a separate model call, retries once, then returns the piece or stops. |
+| **Status** | **Private beta.** Access opens in small batches. The beta is free, no card. It will open to everyone later. |
+| **How to get in** | **[Request private access at ceilord.com](https://ceilord.com)** |
 
-## Two ways to use Ceilord
+## Where each part stands today
 
-| | **Hosted app** | **Ceilord API (bring your own app and database)** |
+| Part | Who it is for | Status |
 | --- | --- | --- |
-| For | Students and anyone who just wants finished writing | Developers building their own product, for example a SAT prep or tutoring app |
-| How it works | Sign in on the web or mobile app and write | Your app and your database call the Ceilord API to write |
-| Database | Managed by Ceilord | Yours, self-hosted and private |
-| Cost | A subscription in the app | An API key from Ceilord |
-| Available | Private beta, by request | Private beta, by request |
+| **Hosted app** (web and mobile) | Students and anyone who wants finished writing | Private beta, request access |
+| **Ceilord API and SDK** | Developers who build their own product on Ceilord | **Planned, not live yet** |
+| **This repository** (open core) | Anyone who wants to read or run the public site and signup code | Available now, MIT license |
 
-**Important:** self-hosting your own database does not mean self-hosting the writing model. The model is not open source and does not run on your machine. A self-hosted setup always needs the Ceilord API, so you need an API key from Ceilord to use it. Without a key, this repository does not write anything.
+## Which one do I use?
+
+| If you are... | Use | What you need |
+| --- | --- | --- |
+| A student or writer who wants a finished piece | The hosted app | Request private access, then a subscription once the beta ends |
+| A developer building your own app, for example for SAT students | The Ceilord API with your own database | Request private access, then a Ceilord API key |
+| Curious how the site and signup work | This repository | Nothing. Clone it and run it |
+
+## Hosted app vs API with your own database
+
+| | **Hosted app** | **API with your own database** |
+| --- | --- | --- |
+| Interface | Ceilord web and mobile app | Your own app |
+| Where your data lives | Ceilord manages it | **Your database, self-hosted and private** |
+| Where the writing model runs | Ceilord | **Ceilord. Always.** |
+| What you pay | A subscription in the app | An API key from Ceilord |
+| Needs the Ceilord API | Built in | **Yes, required** |
+| Available | Private beta | Planned |
+
+> **Read this part twice.** Self-hosting your database does **not** mean self-hosting the writing model. The model is not open source and never runs on your machine. Every self-hosted setup calls the Ceilord API, so you need a Ceilord API key. Without a key, this repository writes nothing.
+
+```mermaid
+flowchart LR
+    subgraph A["Hosted app"]
+        S["Student"] --> APP["Ceilord web and mobile app"]
+    end
+    subgraph B["API with your own database"]
+        D["Developer's app"] --> DB[("Your private database")]
+    end
+    APP --> API["Ceilord API (key required)"]
+    D -->|"API key"| API
+    API --> M["Ceilord writing model (private, hosted by Ceilord)"]
+```
+
+## How a Ceilord job works today
+
+```mermaid
+flowchart LR
+    B["1. Brief"] --> W["2. Write"]
+    W --> C["3. Independent check"]
+    C -->|"pass"| R["Result"]
+    C -->|"fail"| T["4. Retry once"]
+    T --> C2["Check again"]
+    C2 -->|"pass"| R
+    C2 -->|"fail"| X["Stop, flagged for review"]
+```
+
+The check is a separate model call that uses explicit criteria from your brief: every instruction addressed, topic matched, length respected, no placeholder text. If the retry still fails, Ceilord stops instead of silently passing.
+
+## Roadmap
+
+| Stage | What opens | Status |
+| --- | --- | --- |
+| Now | Hosted app in private beta, request access | In progress |
+| Next | Ceilord API and SDK for developers | Planned |
+| Later | Open to everyone | Planned, no date |
+
+## Common questions
+
+| Question | Answer |
+| --- | --- |
+| Is the API live? | No. Direct product access is the current beta. API and SDK access are planned. |
+| Is Ceilord a rewriting or humanizer tool? | No. It writes the piece itself from your brief. |
+| Can I run the model myself? | No. The model is not open source. |
+| Do I need an API key for a self-hosted setup? | Yes. Your database is yours, but writing always goes through the Ceilord API. |
+| Is it free? | The private beta is free, no card. The hosted app will be a subscription. API pricing is not announced yet. |
+| How do I get access? | [Request it at ceilord.com](https://ceilord.com). Access opens in small batches. |
 
 ## What this repository is
 
@@ -44,9 +112,9 @@ This is the **open core**: the public parts of Ceilord that anyone can read, run
 | Database migrations (`migrations/`) | The hosted web and mobile apps |
 | Deployment and security scripts (`scripts/`) | API keys, billing, and account systems |
 
-The writing model is reached only through the hosted Ceilord API. Client libraries and examples for that API will live here once it opens to developers.
+The client libraries and examples for the API will live here once it opens to developers.
 
-## How it fits together
+## How this repository's code fits together
 
 ```text
 Browser ──> Cloudflare Worker (static site + /api/beta) ──> Turso database
