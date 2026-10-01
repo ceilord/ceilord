@@ -15,7 +15,14 @@ const patterns = [
 ];
 
 function git(args, encoding = "utf8") {
-  return execFileSync("git", args, { encoding, stdio: ["ignore", "pipe", "ignore"] });
+  return execFileSync("git", args, {
+    encoding,
+    stdio: ["ignore", "pipe", "ignore"],
+    // Blobs up to 5 MB are intentionally inspected below. Node's default
+    // execFileSync buffer is ~1 MB, which is too small for legitimate binary
+    // assets such as README images before we can identify and skip them.
+    maxBuffer: 6 * 1024 * 1024,
+  });
 }
 
 const objectPaths = new Map();
