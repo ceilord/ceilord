@@ -5,6 +5,21 @@
   --footer-ink: #f4f4f2;
 }
 
+/* SEO pages use the exact public-site brand mark + wordmark lockup. */
+.site-header .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-header .brand-mark {
+  width: 18px;
+  height: 19px;
+  display: block;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
 .blog-content {
   width: min(760px, calc(100vw - 56px));
   margin-inline: auto;
